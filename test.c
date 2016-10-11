@@ -9,12 +9,12 @@ void printDate(){}
 main(int argc, char *argv[]){
 
 	char day[10], month[10], num[2] ,time[8], thing[3], year[4];
-	scanf ("%s", &day);
-	scanf ("%s", &month);
-	scanf ("%s", &num);
-	scanf ("%s", &time);
-	scanf ("%s", &thing);
-	scanf ("%s", &year);
+	scanf ("%s", day);
+	scanf ("%s", month);
+	scanf ("%s", num);
+	scanf ("%s", time);
+	scanf ("%s", thing);
+	scanf ("%s", year);
 	
 	char mon[20], tue[20], wed[10] , th[10], fri[10], sat[10],sun[10];
 	char jan[10], feb[20], mar[10], apr[10],may[10],jun[10],jul[10],
