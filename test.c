@@ -15,14 +15,20 @@ main(int argc, char *argv[]){
 	scanf ("%s", time);
 	scanf ("%s", thing);
 	scanf ("%s", year);
-	
-	char mon[20], tue[20], wed[10] , th[10], fri[10], sat[10],sun[10];
-	char jan[10], feb[20], mar[10], apr[10],may[10],jun[10],jul[10],
+
+
+	char mon[10], tue[10], wed[10] , th[10], fri[10], sat[10],sun[10];
+	char jan[10], feb[10], mar[10], apr[10],may[10],jun[10],jul[10],
 	     aug[10], sep[10], oct[10], nov[10], dec[10];	
+
 
 	FILE *fp;
 	fp = fopen(argv[1], "r");
-	
+
+	if (fp == NULL){
+		printf("ERROR: INVALID INPUT\n");
+		exit(0);
+	}	
 	fscanf(fp, "%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s"
 		,sun, mon, tue, wed, th, fri, sat, 
 		jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec);
@@ -56,6 +62,9 @@ main(int argc, char *argv[]){
 
 	
 		printf("%s ",sun);
+	}else {
+		printf("ERROR: INVALID INPUT");
+		exit(0);
 	}
 
 	/////////////////////////Months//////////////////////////////////////
@@ -108,8 +117,11 @@ main(int argc, char *argv[]){
 
 	
 		printf("%s ",dec);
+	}else {
+		printf("ERROR: INVALID INPUT");
+		exit(0);
 	}
-	
+	fclose(fp);
 	printf("%s %s %s %s \n",num, time, thing, year);
 
 
