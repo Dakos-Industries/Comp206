@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
-
-
+#include <stdlib.h>
+#include <unistd.h>
 void printMonth(char* days[], char month [], int length, int* wsp){
 	
 	int i = 0;
@@ -69,10 +69,21 @@ void printMonth(char* days[], char month [], int length, int* wsp){
 
 void main(int argc, char* argv[]){
 
-
+	if(argc < 4){
+		printf("ERROR: INVALID INPUT");
+		exit(0);
+	}
 	int length = atoi(argv[2]); // gets the string length
 	int weekStart = atoi(argv[3]); // gets the day of the week 
-	//int *wsp = &weekStart;
+
+	if(length < 2){
+		printf("ERROR:INVALID INPUT");
+		exit(0);
+	}else if( weekStart > 7 || weekStart == 0){
+		printf("ERROR:INVALID INPUT");
+		exit(0);	
+	}
+	
 	// Strings as char [] for the days of the week and the months
 	char mon[10], tue[10], wed[10] , th[10], fri[10], sat[10],sun[10];
 	
@@ -83,7 +94,17 @@ void main(int argc, char* argv[]){
 	// in the specified language
 
 	FILE *fp;
-	fp = fopen(argv[1], "r");
+	if (access(argv[1],F_OK) != -1){
+		//exist
+	}else{
+		printf("ERROR: INVALID INPUT");
+		exit(0);
+	}
+	fp = fopen(argv[1], "r");	
+	if(fp == NULL){
+		printf("ERROR: INVALID INPUT");
+		exit(0);
+	}
 	
 	fscanf(fp, "%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s"
 		,sun, mon, tue, wed, th, fri, sat, 
