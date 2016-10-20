@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <math.h>
 void printMonth(char* days[], char month [], int length, int* wsp){
 	
 	int i = 0;
@@ -28,7 +29,14 @@ void printMonth(char* days[], char month [], int length, int* wsp){
 	}
 
 	printf("*\n");
-
+	for (i = 0; i < 22; i++){
+		printf("*");
+	}
+	for (i = 0; i < (length*7); i++){
+		printf("*");
+	}
+	
+	printf("\n");	
 
 	int dayCount = 1;
 
@@ -37,10 +45,30 @@ void printMonth(char* days[], char month [], int length, int* wsp){
 		if(i < *wsp){
 			printf("*  %*s",length," ");
 		}else if (i == *wsp){
-			printf("*  %*d",length,dayCount);
+			printf("* %d ",dayCount);
+			int j = 0;
+			int x = 0;
+
+			if (dayCount < 10){
+				x =1;
+			}else{x =2; }
+
+			for (j = 0; j < (length - x); j++){
+				printf(" ");
+			}
 			++dayCount;
 		}else {
-			printf("*  %*d",length,dayCount);
+			printf("* %d ",dayCount);
+			int w = 0;
+			int x = 0;
+			if (dayCount < 10){
+				x =1;
+			}else{x =2; }
+	
+			for (w = 0; w < (length- x); w++){
+				printf(" ");
+			}
+			
 			++dayCount;	
 		}
 		
@@ -48,7 +76,17 @@ void printMonth(char* days[], char month [], int length, int* wsp){
 	printf("*\n");
 	for(i; i <= 35; i++){
 		if (dayCount < 31){
-			printf("*  %*d",length,dayCount);
+				printf("* %d ",dayCount);
+			int w = 0;
+			int x = 0;
+			if (dayCount < 10){
+				x =1;
+			}else{x =2; }
+	
+			for (w = 0; w < (length- x); w++){
+				printf(" ");
+			}
+			
 			++dayCount;	
 	
 		}else{
