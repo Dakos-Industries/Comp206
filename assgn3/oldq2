@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <string.h>
+
+void main(int argc, char *argv[]){
+	FILE *a, *b;
+	while (1){
+		b = fopen(argv[2], "a+");
+		printf("Send:\t[%s]",argv[3]);
+		char *input;
+		scanf("%s", input);
+		fputs(input,b);
+		fclose(b);
+		a = fopen(argv[1],"r+");
+		char check = fgetc(a);
+		while(check == -1){ 
+		}
+		//char c = 0;
+		printf("Received: ");
+		while(!feof(a)){
+			//c = fgetc(a);
+			printf("%c",check);
+			check = fgetc(a);
+		}
+		printf("\n");
+		fclose(a);
+		//a = fopen(argv[1],"w"); fclose(a);
+	}
+}
