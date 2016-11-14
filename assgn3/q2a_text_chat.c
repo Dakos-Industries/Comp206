@@ -13,6 +13,7 @@ void main(int argc, char *argv[]){
 		i++;
 		strcat(incommsg,tmp);
 		strcat(incommsg," ");
+
 	}
 	if (i == 0){
 		printf("Nothing Received Yet\n");
