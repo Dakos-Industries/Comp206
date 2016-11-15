@@ -8,6 +8,10 @@ void main(int argc, char *argv[]){
 	}
 	//Get the shift from the terminal
 	int value = atoi(argv[1]);
+	if (value == 0){
+		printf("Error");
+		return;
+	}
 	//open the file in readable and check if its usable
 	FILE *fn;
 	fn = fopen(argv[2],"r");
