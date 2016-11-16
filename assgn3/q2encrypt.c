@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+//Same as in Q1A
 void decrypt(int shift, char *argv[]){
 	int value = shift;
 	FILE *fn;
@@ -8,6 +9,7 @@ void decrypt(int shift, char *argv[]){
 	int c;
 	char decryptedWord[1000];
 	int i = 0;
+	//Goes through characters untill the end
 	while(!feof(fn)){
 		c = fgetc(fn);
 		if(c == 0){
@@ -25,6 +27,8 @@ void decrypt(int shift, char *argv[]){
 		i--;
 	}
 }
+//Encryption algorithm based on reverse ceasar algorithm
+//Takes in the shift amount and applies it to every char
 void encrypt(int shift, char *argv[]){
 
 	FILE *fn;
@@ -43,6 +47,10 @@ void encrypt(int shift, char *argv[]){
 	fclose(fn);
 }
 void main (int argc, char *argv[]){
+	//Basically does the same thing as Question 2 but
+	//Adds the use of functions to encrypt and decrypt 
+	// when sending and receiving. Otherwise it is 
+	//exactly the same code
 	FILE *incoming;
 	FILE *outgoing;
 	int shift = atoi(argv[4]);
@@ -59,7 +67,7 @@ void main (int argc, char *argv[]){
 	if (fgets(recmsg,1000,incoming) == NULL){
 		printf("No message received yet\n");
 	}else{
-		decrypt(shift, argv);
+		decrypt(shift, argv);//print out decrypted string
 	}
 
 	fclose(incoming);
@@ -76,7 +84,7 @@ void main (int argc, char *argv[]){
 		strcat(send,tmp);
 		fputs(send,outgoing);
 		fclose(outgoing);
-		encrypt(shift,argv);
+		encrypt(shift,argv);//encrypt the message 
 		char newinc[1000];
 		while (1){
 			sleep(2);

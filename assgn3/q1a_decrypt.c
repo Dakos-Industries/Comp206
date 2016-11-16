@@ -22,6 +22,8 @@ void main(int argc, char *argv[]){
 	int c;
 	char decryptedWord[1000];
 	int i = 0;
+	//Simply looks at every character in the fila and shifts it by the 
+	//specified shift
 	while(!feof(fn)){
 		c = fgetc(fn);
 		if(c == 0){
