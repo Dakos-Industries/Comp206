@@ -5,6 +5,8 @@
 int decrypt(char *encrypt, int index, int shift){
 	int aCount = 0;
 	int zCount = 0;
+	int spaces = 0;
+	//int nullterm = 0;
 	int tmpIndex = index;
 	//Shifts the characters while keeping count of the amount of 'a's and 'z's
 	while(tmpIndex >= 0){
@@ -14,11 +16,17 @@ int decrypt(char *encrypt, int index, int shift){
 		if ((char)(encrypt[tmpIndex]-shift) == 'z' || (char)(encrypt[tmpIndex] - shift) == 'Z'){
 			zCount++;
 		}
+		if ( (char)(encrypt[tmpIndex]-shift) == ' '){
+			spaces++;
+		}
+		/*if ((char)(encrypt[tmpIndex]-shift) == '\0'){
+			nullterm++;
+		}*/
 		tmpIndex--;
 	}
 	//if we have an a and a z then print out the decrypted string
 	//else return 0 for false
-	if (aCount > 0 && zCount > 0){
+	if (aCount > 0 && zCount > 0 && spaces > 0){
 		printf("%d\n",shift);
 		while(index >= 0){
 			printf("%c", encrypt[index] -shift);

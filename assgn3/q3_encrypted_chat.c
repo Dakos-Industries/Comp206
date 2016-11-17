@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-
+#include <stdlib.h>
 //Same as in Q1A
 void decrypt(int shift, char *argv[]){
 	int value = shift;
@@ -53,9 +53,13 @@ void main (int argc, char *argv[]){
 	//exactly the same code
 	FILE *incoming;
 	FILE *outgoing;
+	if (argc < 5){
+		printf("Not enought arguments");
+		exit(0);
+	}
 	int shift = atoi(argv[4]);
 	if (shift == 0){
-		printf("ERROR");
+		printf("ERROR: specifiy a shift greater than 0");
 		return;
 	}
 	incoming = fopen(argv[1], "r");
@@ -78,11 +82,11 @@ void main (int argc, char *argv[]){
 		fputs("[",outgoing);
 		fputs(argv[3],outgoing);
 		fputs("] ",outgoing);
-		printf("Send:");
+		printf("Send:     ");
 		char tmp[1000];
 		fgets(tmp,1000,stdin);
 		if (tmp[0]== '\0'){
-			printf("Session ended due to end of input stream\n");
+			printf("\nSession ended due to end of input stream\n");
 			exit(0);
 		} 
 		strcat(send,tmp);

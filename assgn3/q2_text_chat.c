@@ -7,7 +7,7 @@ void main (int argc, char *argv[]){
 	FILE *incoming;
 	FILE *outgoing;
 	if (argc < 4){
-		printf("Error");
+		printf("Error: not enought arguments");
 		return;
 	}
 	incoming = fopen(argv[1], "r");
@@ -34,14 +34,13 @@ void main (int argc, char *argv[]){
 		fputs(argv[3],outgoing);
 		fputs("] ",outgoing);
 		char tmp[1000];
-		printf("Send:");
+		printf("Send:     ");
 		//gets user input and puts it into the tmp array
 		fgets(tmp,1000,stdin);
 		if (tmp[0]== '\0'){
-			printf("Session ended due to end of input stream\n");
+			printf("\nSession ended due to end of input stream\n");
 			exit(0);
 		}
-		printf("%c",tmp[0]);
 		//Fuse the tmp array and the send array to create the message to send
 		strcat(send,tmp);
 		fputs(send,outgoing);
