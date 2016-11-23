@@ -7,7 +7,7 @@ Contains:
   1. Assignment 1 : Bash scripting
   2. Assignment 2 : Intro C programming
   3. Assignment 3 : Advanced C programming
-  4. Assignment 4 : Intro pyton programming
+  4. Assignment 4 : Intro python programming
   5. Assignment 5 : Advanced python programming
   
 Author of code: Spiros Mavroidakos
