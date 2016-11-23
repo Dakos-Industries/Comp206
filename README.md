@@ -9,4 +9,5 @@ Contains:
   3. Assignment 3 : Advanced C programming
   4. Assignment 4 : Intro pyton programming
   5. Assignment 5 : Advanced python programming
-Autho of code: Spiros Mavroidakos
+  
+Author of code: Spiros Mavroidakos
