@@ -1,4 +1,10 @@
 #!/usr/bin/python
+# Author : Spiros Mavroidakos
+# Version 2.0
+'''This Python3 program takes in a file path through the command line
+and reads the file specified in the path. The program then finds the frequency 
+of every word and prints the results to the screen
+'''
 import sys
 def main(path):
 	file = open(path,"r")

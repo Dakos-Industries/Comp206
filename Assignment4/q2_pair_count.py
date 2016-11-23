@@ -1,4 +1,10 @@
 #!/usr/bin/python
+# Author: Spiros Mavroidakos
+# Version: 2.0
+''' This Python3 program takes in a text file via the command line
+and counts the frequency of the word pairs and prints the results 
+to the screen
+'''
 import sys
 
 def main(path):
