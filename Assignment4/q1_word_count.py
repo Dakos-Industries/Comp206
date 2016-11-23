@@ -6,6 +6,7 @@ and reads the file specified in the path. The program then finds the frequency
 of every word and prints the results to the screen
 '''
 import sys
+from operator import itemgetter
 def main(path):
 	file = open(path,"r")
 	wordcount = {}
@@ -22,7 +23,6 @@ def main(path):
 			wordcount[compare] = 1
 		else:
 			wordcount[compare] += 1
-
-	for k,v in wordcount.items():
-		print (k,v)
+	for key, val in sorted(wordcount.items(), key = itemgetter(1), reverse = True):
+		print (key,val)
 main(sys.argv[1])

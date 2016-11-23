@@ -6,7 +6,7 @@ and counts the frequency of the word pairs and prints the results
 to the screen
 '''
 import sys
-
+from operator import itemgetter
 def main(path):
 	file = open(path,"r")
 	wordcount = {}
@@ -34,6 +34,6 @@ def main(path):
 			wordcount[newpair] += 1
 			prevword = compare
 
-	for k,v in wordcount.items():
-		print (k,v)
+	for key, val in sorted(wordcount.items(), key = itemgetter(1), reverse = True):
+		print (key,val)
 main(sys.argv[1])
