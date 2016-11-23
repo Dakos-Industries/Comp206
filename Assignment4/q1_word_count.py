@@ -9,20 +9,20 @@ import sys
 from operator import itemgetter
 def main(path):
 	file = open(path,"r")
-	wordcount = {}
+	wordFreq = {}
 	for word in file.read().split():
 		compare = word.lower()
 		if "-" in compare:
 			compare = compare.split("-")
 			for i in compare:
-				if i not in wordcount:
-					wordcount[i] = 1
+				if i not in wordFreqt:
+					wordFreq[i] = 1
 				else:
-					wordcount[i] +=1
+					wordFreq[i] +=1
 		elif compare not in wordcount:
-			wordcount[compare] = 1
+			wordFreq[compare] = 1
 		else:
-			wordcount[compare] += 1
-	for key, val in sorted(wordcount.items(), key = itemgetter(1), reverse = True):
+			wordFreq[compare] += 1
+	for key, val in sorted(wordFreq.items(), key = itemgetter(1), reverse = True):
 		print (key,val)
 main(sys.argv[1])

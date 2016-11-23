@@ -9,31 +9,31 @@ import sys
 from operator import itemgetter
 def main(path):
 	file = open(path,"r")
-	wordcount = {}
+	wordFreq = {}
 	wholetext = file.read().split()
 	file.close();
 	prevword = wholetext[0].lower()
 	del wholetext[0]
 	for word in wholetext:
-		compare = word.lower()
-		newpair = prevword + " " + compare
-		if "-" in compare:
-			compare = compare.split("-")
-			for i in compare:
+		currentWord = word.lower()
+		newpair = prevword + " " + currentWord
+		if "-" in currentWord:
+			currentWord = currentWord.split("-")
+			for i in currentWord:
 				temp = prevword + " " + i
-				if temp not in wordcount:
-					wordcount[temp] = 1
+				if temp not in wordFreq:
+					wordFreq[temp] = 1
 					prevword = i
 				else:
-					wordcount[temp] +=1
+					wordFreq[temp] +=1
 					prevword = i
-		elif newpair not in wordcount:
-			wordcount[newpair] = 1
-			prevword = compare
+		elif newpair not in wordFreq:
+			wordFreq[newpair] = 1
+			prevword = currentWord
 		else:
-			wordcount[newpair] += 1
-			prevword = compare
+			wordFreq[newpair] += 1
+			prevword = currentWord
 
-	for key, val in sorted(wordcount.items(), key = itemgetter(1), reverse = True):
+	for key, val in sorted(wordFreq.items(), key = itemgetter(1), reverse = True):
 		print (key,val)
 main(sys.argv[1])
