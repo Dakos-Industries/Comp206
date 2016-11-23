@@ -15,11 +15,11 @@ def main(path):
 		if "-" in compare:
 			compare = compare.split("-")
 			for i in compare:
-				if i not in wordFreqt:
+				if i not in wordFreq:
 					wordFreq[i] = 1
 				else:
 					wordFreq[i] +=1
-		elif compare not in wordcount:
+		elif compare not in wordFreq:
 			wordFreq[compare] = 1
 		else:
 			wordFreq[compare] += 1
