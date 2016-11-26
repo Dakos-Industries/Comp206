@@ -1,6 +1,6 @@
 #!/usr/bin/python
 #Author Spiros Mavroidakos
-#Version 1.0
+#Version 2.0
 ''' Solution to Assignment 4 question 3 chat bot'''
 import sys
 import random
