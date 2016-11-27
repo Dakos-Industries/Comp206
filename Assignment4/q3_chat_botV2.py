@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #Author Spiros Mavroidakos
 #Version 2.0
 ''' Solution to Assignment 4 question 3 chat bot'''
@@ -40,16 +40,17 @@ def findPair(word):
 	comparison = ""
 	for key in wordFreq:
 		comparison = ""
+		if count == 10 :
+			break
 		for char in key:
 			comparison += char 
-			if string == comparison:
+			if (string == comparison) and ((key[len(comparison)] == " ") or (key[len(comparison)] == ".")) :
 				if (count == 0):
 					print(key.capitalize(), end = " ")
 				else:
 					print(key.lower(), end = " ")
 				count += 1
 				if key[len(key)-1] == ".":
-					print("")
 					return None
 			elif (char == " "):
 				comparison = ""
