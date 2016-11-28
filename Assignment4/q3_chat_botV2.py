@@ -7,6 +7,7 @@ import random
 from operator import itemgetter
 
 wordFreq = {}
+endWord = []
 #This function will save each word pair to the wordFreq dictionary
 def database(path):
 	
@@ -34,6 +35,7 @@ def database(path):
 		else:
 			wordFreq[newpair] += 1
 			prevword = currentWord
+	endWord.append(prevword)
 def findPair(word):
 	count = 0
 	string = word
@@ -56,6 +58,10 @@ def findPair(word):
 				comparison = ""
 				break
 	if count == 0:
+		
+		if (word + ".") in endWord:
+			print(word.capitalize(), end = ".")
+			return None 
 		tmp = random.choice(list(wordFreq.keys())).capitalize()
 		if tmp[len(tmp)-1] == ".":
 			print(tmp, end = "")
