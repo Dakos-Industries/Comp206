@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 #Author Spiros Mavroidakos
-#Version 2.0
+#Version 3.0
 ''' Solution to Assignment 4 question 3 chat bot'''
+import os
 import sys
 import random
 from operator import itemgetter
@@ -10,7 +11,9 @@ wordFreq = {}
 endWord = []
 #This function will save each word pair to the wordFreq dictionary
 def database(path):
-	
+	if os.path.exists(path) == False:
+		print("File does not exist. Please enter existing file.")
+		return None
 	file = open(path,"r")
 	wholetext = file.read().split()
 	file.close();
