@@ -7,12 +7,14 @@ of every word and prints the results to the screen
 '''
 import os
 import sys
+import re, string
 from operator import itemgetter
 def main(path):
 	if os.path.exists(path) == False:
 		print("File does not exist. Please enter an existing file")
 		return None
 	file = open(path,"r")
+	regex = re.compile('[^a-zA-z]')
 	wordFreq = {}
 	for word in file.read().split():
 		compare = word.lower()
@@ -20,15 +22,15 @@ def main(path):
 			compare = compare.split("-")
 			for i in compare:
 				if i not in wordFreq:
-					wordFreq[i] = 1
+					wordFreq[regex.sub("",i)] = 1
 				else:
-					wordFreq[i] +=1
+					wordFreq[regex.sub("",i)] +=1
 		elif compare not in wordFreq:
-			wordFreq[compare] = 1
+			wordFreq[regex.sub("",compare)] = 1
 		else:
-			wordFreq[compare] += 1
+			wordFreq[regex.sub("",compare)] += 1
 	for key, val in sorted(wordFreq.items(), key = itemgetter(1), reverse = True):
-		print (key,val)
+		print key,val
 if len(sys.argv) == 1:
 	print("Please enter at least one file as an argument")
 	sys.exit(0)
