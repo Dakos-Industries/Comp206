@@ -39,7 +39,6 @@ def main(path):
 		else:
 			wordFreq[newpair] += 1
 			prevword = regex.sub("", currentWord)
-
 	for key, val in sorted(wordFreq.items(), key = itemgetter(1), reverse = True):
 		print key,val
 if len(sys.argv) == 1:

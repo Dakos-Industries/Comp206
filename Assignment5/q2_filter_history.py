@@ -63,7 +63,6 @@ def filt():
 	pickle.dump(historia,f)
 	pickle.dump(pos,f)
 	f.close()
-	print pos, len(historia)
 def load():
 	#Load in the data from the given bmp file
 	in_img = open(sys.argv[2], 'rb')
@@ -89,8 +88,8 @@ def undo():
 	f = open('history.pickle','rb')
 	historia = pickle.load(f)
 	pos = pickle.load(f)
-	print pos
 	f.close()
+	# checks to see if undo is possible
 	if pos == 0:
 		print "Can't undo at earliest change"
 		return None
@@ -104,7 +103,6 @@ def undo():
 		else:
 			historia[pos] = redo_data
 		pos -= 1
-		print pos, len(historia)
 		out_img = open("result.bmp", "wb")
 		out_img.write(historia[pos])
 		out_img.close()
@@ -113,7 +111,7 @@ def undo():
 		pickle.dump(pos,f)
 		f.close()
 def redo():
-	#cheching if undo was done before
+	#cheching if file exists
 	if os.path.isfile("history.pickle") == False:
 		print "Nothing to undo!"
 		return None
@@ -121,12 +119,13 @@ def redo():
 	historia = pickle.load(f)
 	pos = pickle.load(f)
 	f.close()
+	# checking to see if we can redo
 	if pos+1 >= (len(historia)):
 		print "At latest change"
 		return None
 	else:
 		
-		# load the previous data and undo the previous steps
+		# load the  data and redo the previous steps
 		pos += 1
 		out_img = open("result.bmp", "wb")
 		out_img.write(historia[pos])

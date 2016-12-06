@@ -10,25 +10,27 @@ import sys
 import re, string
 from operator import itemgetter
 def main(path):
+	count = 0
 	if os.path.exists(path) == False:
 		print("File does not exist. Please enter an existing file")
 		return None
 	file = open(path,"r")
-	regex = re.compile('[^a-zA-z]')
+	regex = re.compile('[^a-zA-z0-9]')
 	wordFreq = {}
 	for word in file.read().split():
 		compare = word.lower()
 		if "-" in compare:
 			compare = compare.split("-")
 			for i in compare:
-				if i not in wordFreq:
+				if regex.sub("",i) not in wordFreq:
 					wordFreq[regex.sub("",i)] = 1
 				else:
 					wordFreq[regex.sub("",i)] +=1
-		elif compare not in wordFreq:
+		elif regex.sub("",compare) not in wordFreq:
 			wordFreq[regex.sub("",compare)] = 1
 		else:
 			wordFreq[regex.sub("",compare)] += 1
+	
 	for key, val in sorted(wordFreq.items(), key = itemgetter(1), reverse = True):
 		print key,val
 if len(sys.argv) == 1:
